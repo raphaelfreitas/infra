@@ -1,0 +1,18 @@
+server {
+    listen 8080;
+    server_name www.edumais.com.br;
+    rewrite ^/(.*)$ http://edumais.com.br/$1 permanent;
+}
+
+server {
+    listen 8080;
+    root  /web/www/edumais/;
+    server_name edumais.com.br;
+    set $remove_browser_cache 0;
+
+    include /etc/nginx/conf.d/*;
+
+    location ^~ /wp-content/uploads {
+        proxy_pass http://edumaiscombr.s3.amazonaws.com;
+    }
+}
