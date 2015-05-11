@@ -1,0 +1,45 @@
+; Enable apc extension module
+extension = apc.so
+
+; Options for the APC module version >= 3.1.3
+; See http://www.php.net/manual/en/apc.configuration.php
+
+
+; This can be set to enable the APC opcode cache
+; Don't set this option if another opcode cache is enabled
+apc.enable_opcode_cache=1
+
+apc.stat=1
+apc.enable_cli=0
+apc.use_request_time=1
+apc.cache_by_default=1
+
+; PHP file Cache
+apc.ttl=600
+apc.user_ttl=600
+apc.gc_ttl=600
+
+apc.filters
+apc.mmap_file_mask=/tmp/apc.XXXXXX
+
+apc.file_update_protection=2
+
+;This MUST be 0, WP can have errors otherwise!
+apc.include_once_override=0
+
+apc.lazy_classes=0
+apc.lazy_functions=0
+apc.coredump_unmap=0
+apc.file_md5=0
+apc.preload_path
+
+apc.shm_segments=1
+
+apc.shm_size=512M
+
+apc.max_file_size=2M
+
+apc.num_files_hint=1024
+
+apc.user_entries_hint=1024
+

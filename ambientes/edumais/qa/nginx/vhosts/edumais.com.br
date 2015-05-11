@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    root  /web/www/edumais/;
+    server_name qa.edumais.com.br;
+    set $remove_browser_cache 0;
+
+    include /etc/nginx/conf.d/*;
+
+    location ^~ /wp-content/uploads {
+        proxy_pass http://edumaiscombr.s3.amazonaws.com;
+    }
+
+   # Server status
+	location = /status {
+		stub_status on;
+		allow 127.0.0.1;
+		allow 12.13.14.15;
+		allow all;
+	}
+
+}
